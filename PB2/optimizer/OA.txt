@@ -1,0 +1,455 @@
+Configuration space object:
+  Hyperparameters:
+    coalescer:__choice__, Type: Categorical, Choices: {NoCoalescer}, Default: NoCoalescer
+    data_loader:batch_size, Type: UniformInteger, Range: [32, 320], Default: 64
+    encoder:__choice__, Type: Categorical, Choices: {NoEncoder}, Default: NoEncoder
+    feature_preprocessor:ExtraTreesPreprocessorClassification:bootstrap, Type: Categorical, Choices: {True, False}, Default: True
+    feature_preprocessor:ExtraTreesPreprocessorClassification:criterion, Type: Categorical, Choices: {gini, entropy}, Default: gini
+    feature_preprocessor:ExtraTreesPreprocessorClassification:max_depth, Type: Constant, Value: none
+    feature_preprocessor:ExtraTreesPreprocessorClassification:max_features, Type: UniformFloat, Range: [0.0, 1.0], Default: 0.5
+    feature_preprocessor:ExtraTreesPreprocessorClassification:max_leaf_nodes, Type: Constant, Value: none
+    feature_preprocessor:ExtraTreesPreprocessorClassification:min_impurity_decrease, Type: Constant, Value: 0
+    feature_preprocessor:ExtraTreesPreprocessorClassification:min_samples_leaf, Type: UniformInteger, Range: [1, 20], Default: 1
+    feature_preprocessor:ExtraTreesPreprocessorClassification:min_samples_split, Type: UniformInteger, Range: [2, 20], Default: 2
+    feature_preprocessor:ExtraTreesPreprocessorClassification:min_weight_fraction_leaf, Type: Constant, Value: 0
+    feature_preprocessor:ExtraTreesPreprocessorClassification:n_estimators, Type: UniformInteger, Range: [10, 100], Default: 10
+    feature_preprocessor:FastICA:algorithm, Type: Categorical, Choices: {parallel, deflation}, Default: parallel
+    feature_preprocessor:FastICA:fun, Type: Categorical, Choices: {logcosh, exp, cube}, Default: logcosh
+    feature_preprocessor:FastICA:n_components, Type: UniformInteger, Range: [39, 71], Default: 40
+    feature_preprocessor:FastICA:whiten, Type: Categorical, Choices: {True, False}, Default: False
+    feature_preprocessor:FeatureAgglomeration:affinity, Type: Categorical, Choices: {euclidean, manhattan, cosine}, Default: euclidean
+    feature_preprocessor:FeatureAgglomeration:linkage, Type: Categorical, Choices: {ward, complete, average}, Default: ward
+    feature_preprocessor:FeatureAgglomeration:n_clusters, Type: UniformInteger, Range: [39, 71], Default: 40
+    feature_preprocessor:FeatureAgglomeration:pooling_func, Type: Categorical, Choices: {mean, median, max}, Default: max
+    feature_preprocessor:KernelPCA:coef0, Type: UniformFloat, Range: [-1.0, 1.0], Default: 0.0
+    feature_preprocessor:KernelPCA:degree, Type: UniformInteger, Range: [2, 5], Default: 3, on log-scale
+    feature_preprocessor:KernelPCA:gamma, Type: UniformFloat, Range: [3.0517578125e-05, 8.0], Default: 0.01, on log-scale
+    feature_preprocessor:KernelPCA:kernel, Type: Categorical, Choices: {poly, rbf, sigmoid, cosine}, Default: rbf
+    feature_preprocessor:KernelPCA:n_components, Type: UniformInteger, Range: [39, 71], Default: 40
+    feature_preprocessor:LibLinearSVCPreprocessor:C, Type: UniformFloat, Range: [0.03125, 32768.0], Default: 1.0, on log-scale
+    feature_preprocessor:LibLinearSVCPreprocessor:dual, Type: Categorical, Choices: {False}, Default: False
+    feature_preprocessor:LibLinearSVCPreprocessor:fit_intercept, Type: Categorical, Choices: {True}, Default: True
+    feature_preprocessor:LibLinearSVCPreprocessor:intercept_scaling, Type: Constant, Value: 1
+    feature_preprocessor:LibLinearSVCPreprocessor:loss, Type: Categorical, Choices: {squared_hinge, hinge}, Default: squared_hinge
+    feature_preprocessor:LibLinearSVCPreprocessor:multi_class, Type: Categorical, Choices: {ovr}, Default: ovr
+    feature_preprocessor:LibLinearSVCPreprocessor:penalty, Type: Categorical, Choices: {l1}, Default: l1
+    feature_preprocessor:LibLinearSVCPreprocessor:tol, Type: UniformFloat, Range: [1e-05, 0.1], Default: 0.0001, on log-scale
+    feature_preprocessor:Nystroem:coef0, Type: UniformFloat, Range: [-1.0, 1.0], Default: 0.0
+    feature_preprocessor:Nystroem:degree, Type: UniformInteger, Range: [2, 5], Default: 3, on log-scale
+    feature_preprocessor:Nystroem:gamma, Type: UniformFloat, Range: [3.0517578125e-05, 8.0], Default: 0.01, on log-scale
+    feature_preprocessor:Nystroem:kernel, Type: Categorical, Choices: {poly, rbf, sigmoid, cosine}, Default: cosine
+    feature_preprocessor:Nystroem:n_components, Type: UniformInteger, Range: [39, 71], Default: 40
+    feature_preprocessor:PCA:keep_variance, Type: UniformFloat, Range: [0.5, 0.9999], Default: 0.9999, on log-scale
+    feature_preprocessor:PCA:whiten, Type: Categorical, Choices: {True, False}, Default: False
+    feature_preprocessor:PolynomialFeatures:degree, Type: UniformInteger, Range: [2, 3], Default: 2, on log-scale
+    feature_preprocessor:PolynomialFeatures:include_bias, Type: Categorical, Choices: {True, False}, Default: False
+    feature_preprocessor:PolynomialFeatures:interaction_only, Type: Categorical, Choices: {True, False}, Default: False
+    feature_preprocessor:RandomKitchenSinks:gamma, Type: UniformFloat, Range: [3.0517578125e-05, 8.0], Default: 1.0, on log-scale
+    feature_preprocessor:RandomKitchenSinks:n_components, Type: UniformInteger, Range: [39, 71], Default: 40
+    feature_preprocessor:RandomTreesEmbedding:max_depth, Type: UniformInteger, Range: [2, 10], Default: 5
+    feature_preprocessor:RandomTreesEmbedding:max_leaf_nodes, Type: Constant, Value: none
+    feature_preprocessor:RandomTreesEmbedding:min_samples_leaf, Type: UniformInteger, Range: [1, 20], Default: 1
+    feature_preprocessor:RandomTreesEmbedding:min_samples_split, Type: UniformInteger, Range: [2, 20], Default: 2
+    feature_preprocessor:RandomTreesEmbedding:n_estimators, Type: UniformInteger, Range: [10, 100], Default: 10
+    feature_preprocessor:SelectPercentileClassification:percentile, Type: UniformInteger, Range: [1, 99], Default: 50
+    feature_preprocessor:SelectPercentileClassification:score_func, Type: Categorical, Choices: {f_classif}, Default: f_classif
+    feature_preprocessor:SelectRatesClassification:alpha, Type: UniformFloat, Range: [0.01, 0.5], Default: 0.1
+    feature_preprocessor:SelectRatesClassification:mode, Type: Categorical, Choices: {fpr, fdr, fwe, percentile}, Default: fpr
+    feature_preprocessor:SelectRatesClassification:score_func, Type: Categorical, Choices: {f_classif}, Default: f_classif
+    feature_preprocessor:TruncatedSVD:target_dim, Type: UniformInteger, Range: [39, 71], Default: 40
+    feature_preprocessor:__choice__, Type: Categorical, Choices: {ExtraTreesPreprocessorClassification, FastICA, FeatureAgglomeration, KernelPCA, LibLinearSVCPreprocessor, NoFeaturePreprocessor, Nystroem, PCA, PolynomialFeatures, RandomKitchenSinks, RandomTreesEmbedding, SelectPercentileClassification, SelectRatesClassification, TruncatedSVD}, Default: NoFeaturePreprocessor
+    imputer:numerical_strategy, Type: Categorical, Choices: {mean, median, most_frequent, constant_zero}, Default: mean
+    lr_scheduler:CosineAnnealingLR:T_max, Type: UniformInteger, Range: [10, 500], Default: 200
+    lr_scheduler:CosineAnnealingWarmRestarts:T_0, Type: UniformInteger, Range: [1, 20], Default: 1
+    lr_scheduler:CosineAnnealingWarmRestarts:T_mult, Type: UniformFloat, Range: [1.0, 2.0], Default: 1.0
+    lr_scheduler:CyclicLR:base_lr, Type: UniformFloat, Range: [1e-06, 0.1], Default: 0.01
+    lr_scheduler:CyclicLR:max_lr, Type: UniformFloat, Range: [0.001, 0.1], Default: 0.1
+    lr_scheduler:CyclicLR:mode, Type: Categorical, Choices: {triangular, triangular2, exp_range}, Default: triangular
+    lr_scheduler:CyclicLR:step_size_up, Type: UniformInteger, Range: [1000, 4000], Default: 2000
+    lr_scheduler:ExponentialLR:gamma, Type: UniformFloat, Range: [0.7, 0.9999], Default: 0.9
+    lr_scheduler:ReduceLROnPlateau:factor, Type: UniformFloat, Range: [0.01, 0.9], Default: 0.1
+    lr_scheduler:ReduceLROnPlateau:mode, Type: Categorical, Choices: {min, max}, Default: min
+    lr_scheduler:ReduceLROnPlateau:patience, Type: UniformInteger, Range: [5, 20], Default: 10
+    lr_scheduler:StepLR:gamma, Type: UniformFloat, Range: [0.001, 0.9], Default: 0.1
+    lr_scheduler:StepLR:step_size, Type: UniformInteger, Range: [1, 10], Default: 5
+    lr_scheduler:__choice__, Type: Categorical, Choices: {CosineAnnealingLR, CosineAnnealingWarmRestarts, CyclicLR, ExponentialLR, NoScheduler, ReduceLROnPlateau, StepLR}, Default: ReduceLROnPlateau
+    network_backbone:CDCNNBackbone:kernel_growth_ratio, Type: Categorical, Choices: {2, 4, 8}, Default: 4
+    network_backbone:CDCNNBackbone:kernel_size, Type: Categorical, Choices: {3, 5, 7}, Default: 3
+    network_backbone:CDCNNBackbone:num_gconv, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:CDCNNBackbone:num_kernels, Type: UniformInteger, Range: [8, 32], Default: 16
+    network_backbone:CDCNNBackbone:reduction_ratio, Type: UniformInteger, Range: [8, 32], Default: 16
+    network_backbone:CLNNBackbone:kernel_growth_ratio, Type: Categorical, Choices: {2, 4, 8}, Default: 4
+    network_backbone:CLNNBackbone:kernel_size, Type: Categorical, Choices: {3, 5, 7}, Default: 3
+    network_backbone:CLNNBackbone:num_kernels, Type: UniformInteger, Range: [8, 32], Default: 16
+    network_backbone:CLNNBackbone:num_unitb, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:DCNNBackbone:kernel_growth_ratio, Type: Categorical, Choices: {2, 4, 8}, Default: 4
+    network_backbone:DCNNBackbone:kernel_size, Type: Categorical, Choices: {3, 5, 7}, Default: 3
+    network_backbone:DCNNBackbone:num_kernels, Type: UniformInteger, Range: [8, 32], Default: 16
+    network_backbone:DCNNBackbone:num_sconv, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:DCNNBackbone:reduction_ratio, Type: UniformInteger, Range: [8, 32], Default: 16
+    network_backbone:LNNBackbone:kernel_growth_ratio, Type: Categorical, Choices: {2, 4, 8}, Default: 4
+    network_backbone:LNNBackbone:kernel_size, Type: Categorical, Choices: {3, 5, 7}, Default: 3
+    network_backbone:LNNBackbone:num_kernels, Type: UniformInteger, Range: [8, 32], Default: 16
+    network_backbone:LNNBackbone:num_unitb, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:MLPBackbone:activation, Type: Categorical, Choices: {relu, tanh, sigmoid}, Default: relu
+    network_backbone:MLPBackbone:dropout_1, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_10, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_11, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_12, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_13, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_14, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_15, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_2, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_3, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_4, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_5, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_6, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_7, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_8, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:dropout_9, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:MLPBackbone:num_groups, Type: UniformInteger, Range: [1, 15], Default: 5
+    network_backbone:MLPBackbone:num_units_1, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_10, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_11, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_12, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_13, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_14, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_15, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_2, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_3, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_4, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_5, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_6, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_7, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_8, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:num_units_9, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:MLPBackbone:use_dropout, Type: Categorical, Choices: {True, False}, Default: False
+    network_backbone:ResNetBackbone:activation, Type: Categorical, Choices: {relu, tanh, sigmoid}, Default: relu
+    network_backbone:ResNetBackbone:blocks_per_group_0, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_1, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_10, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_11, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_12, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_13, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_14, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_15, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_2, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_3, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_4, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_5, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_6, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_7, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_8, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:blocks_per_group_9, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ResNetBackbone:dropout_0, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_1, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_10, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_11, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_12, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_13, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_14, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_15, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_2, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_3, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_4, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_5, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_6, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_7, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_8, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:dropout_9, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ResNetBackbone:max_shake_drop_probability, Type: UniformFloat, Range: [0.0, 1.0], Default: 0.5
+    network_backbone:ResNetBackbone:num_groups, Type: UniformInteger, Range: [1, 15], Default: 5
+    network_backbone:ResNetBackbone:num_units_0, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_1, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_10, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_11, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_12, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_13, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_14, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_15, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_2, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_3, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_4, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_5, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_6, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_7, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_8, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:num_units_9, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ResNetBackbone:use_dropout, Type: Categorical, Choices: {True, False}, Default: False
+    network_backbone:ResNetBackbone:use_shake_drop, Type: Categorical, Choices: {True, False}, Default: True
+    network_backbone:ResNetBackbone:use_shake_shake, Type: Categorical, Choices: {True, False}, Default: True
+    network_backbone:ShapedMLPBackbone:activation, Type: Categorical, Choices: {relu, tanh, sigmoid}, Default: relu
+    network_backbone:ShapedMLPBackbone:max_dropout, Type: UniformFloat, Range: [0.0, 1.0], Default: 0.5
+    network_backbone:ShapedMLPBackbone:max_units, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ShapedMLPBackbone:mlp_shape, Type: Categorical, Choices: {funnel, long_funnel, diamond, hexagon, brick, triangle, stairs}, Default: funnel
+    network_backbone:ShapedMLPBackbone:num_groups, Type: UniformInteger, Range: [1, 15], Default: 5
+    network_backbone:ShapedMLPBackbone:output_dim, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ShapedMLPBackbone:use_dropout, Type: Categorical, Choices: {True, False}, Default: False
+    network_backbone:ShapedResNetBackbone:activation, Type: Categorical, Choices: {relu, tanh, sigmoid}, Default: relu
+    network_backbone:ShapedResNetBackbone:blocks_per_group, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_backbone:ShapedResNetBackbone:max_dropout, Type: UniformFloat, Range: [0.0, 0.8], Default: 0.5
+    network_backbone:ShapedResNetBackbone:max_shake_drop_probability, Type: UniformFloat, Range: [0.0, 1.0], Default: 0.5
+    network_backbone:ShapedResNetBackbone:max_units, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ShapedResNetBackbone:num_groups, Type: UniformInteger, Range: [1, 15], Default: 5
+    network_backbone:ShapedResNetBackbone:output_dim, Type: UniformInteger, Range: [10, 1024], Default: 200
+    network_backbone:ShapedResNetBackbone:resnet_shape, Type: Categorical, Choices: {funnel, long_funnel, diamond, hexagon, brick, triangle, stairs}, Default: funnel
+    network_backbone:ShapedResNetBackbone:use_dropout, Type: Categorical, Choices: {True, False}, Default: False
+    network_backbone:ShapedResNetBackbone:use_shake_drop, Type: Categorical, Choices: {True, False}, Default: True
+    network_backbone:ShapedResNetBackbone:use_shake_shake, Type: Categorical, Choices: {True, False}, Default: True
+    network_backbone:__choice__, Type: Categorical, Choices: {CDCNNBackbone, CLNNBackbone, DCNNBackbone, LNNBackbone, MLPBackbone, ResNetBackbone, ShapedMLPBackbone, ShapedResNetBackbone}, Default: ShapedMLPBackbone
+    network_embedding:__choice__, Type: Categorical, Choices: {NoEmbedding}, Default: NoEmbedding
+    network_head:__choice__, Type: Categorical, Choices: {fully_connected}, Default: fully_connected
+    network_head:fully_connected:activation, Type: Categorical, Choices: {relu, tanh, sigmoid}, Default: relu
+    network_head:fully_connected:num_layers, Type: UniformInteger, Range: [1, 4], Default: 2
+    network_head:fully_connected:units_layer_1, Type: UniformInteger, Range: [64, 512], Default: 128
+    network_head:fully_connected:units_layer_2, Type: UniformInteger, Range: [64, 512], Default: 128
+    network_head:fully_connected:units_layer_3, Type: UniformInteger, Range: [64, 512], Default: 128
+    network_head:fully_connected:units_layer_4, Type: UniformInteger, Range: [64, 512], Default: 128
+    network_init:NoInit:bias_strategy, Type: Categorical, Choices: {Zero, Normal}, Default: Normal
+    network_init:__choice__, Type: Categorical, Choices: {NoInit}, Default: NoInit
+    optimizer:AdamOptimizer:beta1, Type: UniformFloat, Range: [0.85, 0.999], Default: 0.9
+    optimizer:AdamOptimizer:beta2, Type: UniformFloat, Range: [0.9, 0.9999], Default: 0.9
+    optimizer:AdamOptimizer:lr, Type: UniformFloat, Range: [1e-05, 0.1], Default: 0.01, on log-scale
+    optimizer:AdamOptimizer:weight_decay, Type: UniformFloat, Range: [0.0, 0.1], Default: 0.0
+    optimizer:AdamWOptimizer:beta1, Type: UniformFloat, Range: [0.85, 0.999], Default: 0.9
+    optimizer:AdamWOptimizer:beta2, Type: UniformFloat, Range: [0.9, 0.9999], Default: 0.9
+    optimizer:AdamWOptimizer:lr, Type: UniformFloat, Range: [1e-05, 0.1], Default: 0.01, on log-scale
+    optimizer:AdamWOptimizer:weight_decay, Type: UniformFloat, Range: [0.0, 0.1], Default: 0.0
+    optimizer:RMSpropOptimizer:alpha, Type: UniformFloat, Range: [0.1, 0.99], Default: 0.99
+    optimizer:RMSpropOptimizer:lr, Type: UniformFloat, Range: [1e-05, 0.1], Default: 0.01, on log-scale
+    optimizer:RMSpropOptimizer:momentum, Type: UniformFloat, Range: [0.0, 0.99], Default: 0.0
+    optimizer:RMSpropOptimizer:weight_decay, Type: UniformFloat, Range: [0.0, 0.1], Default: 0.0
+    optimizer:SGDOptimizer:lr, Type: UniformFloat, Range: [1e-05, 0.1], Default: 0.01, on log-scale
+    optimizer:SGDOptimizer:momentum, Type: UniformFloat, Range: [0.0, 0.99], Default: 0.0
+    optimizer:SGDOptimizer:weight_decay, Type: UniformFloat, Range: [0.0, 0.1], Default: 0.0
+    optimizer:__choice__, Type: Categorical, Choices: {AdamOptimizer, AdamWOptimizer, RMSpropOptimizer, SGDOptimizer}, Default: AdamOptimizer
+    scaler:Normalizer:norm, Type: Categorical, Choices: {mean_abs, mean_squared, max}, Default: mean_squared
+    scaler:QuantileTransformer:n_quantiles, Type: UniformInteger, Range: [10, 2000], Default: 1000
+    scaler:QuantileTransformer:output_distribution, Type: Categorical, Choices: {uniform, normal}, Default: normal
+    scaler:RobustScaler:q_max, Type: UniformFloat, Range: [0.7, 0.999], Default: 0.75
+    scaler:RobustScaler:q_min, Type: UniformFloat, Range: [0.001, 0.3], Default: 0.25
+    scaler:__choice__, Type: Categorical, Choices: {MinMaxScaler, NoScaler, Normalizer, PowerTransformer, QuantileTransformer, RobustScaler, StandardScaler}, Default: StandardScaler
+    trainer:StandardTrainer:weighted_loss, Type: Categorical, Choices: {True, False}, Default: True
+    trainer:__choice__, Type: Categorical, Choices: {StandardTrainer}, Default: StandardTrainer
+  Conditions:
+    (network_backbone:MLPBackbone:dropout_10 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_10 | network_backbone:MLPBackbone:num_groups > 9)
+    (network_backbone:MLPBackbone:dropout_11 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_11 | network_backbone:MLPBackbone:num_groups > 10)
+    (network_backbone:MLPBackbone:dropout_12 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_12 | network_backbone:MLPBackbone:num_groups > 11)
+    (network_backbone:MLPBackbone:dropout_13 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_13 | network_backbone:MLPBackbone:num_groups > 12)
+    (network_backbone:MLPBackbone:dropout_14 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_14 | network_backbone:MLPBackbone:num_groups > 13)
+    (network_backbone:MLPBackbone:dropout_15 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_15 | network_backbone:MLPBackbone:num_groups > 14)
+    (network_backbone:MLPBackbone:dropout_2 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_2 | network_backbone:MLPBackbone:num_groups > 1)
+    (network_backbone:MLPBackbone:dropout_3 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_3 | network_backbone:MLPBackbone:num_groups > 2)
+    (network_backbone:MLPBackbone:dropout_4 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_4 | network_backbone:MLPBackbone:num_groups > 3)
+    (network_backbone:MLPBackbone:dropout_5 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_5 | network_backbone:MLPBackbone:num_groups > 4)
+    (network_backbone:MLPBackbone:dropout_6 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_6 | network_backbone:MLPBackbone:num_groups > 5)
+    (network_backbone:MLPBackbone:dropout_7 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_7 | network_backbone:MLPBackbone:num_groups > 6)
+    (network_backbone:MLPBackbone:dropout_8 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_8 | network_backbone:MLPBackbone:num_groups > 7)
+    (network_backbone:MLPBackbone:dropout_9 | network_backbone:MLPBackbone:use_dropout == True && network_backbone:MLPBackbone:dropout_9 | network_backbone:MLPBackbone:num_groups > 8)
+    (network_backbone:ResNetBackbone:dropout_10 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_10 | network_backbone:ResNetBackbone:num_groups > 9)
+    (network_backbone:ResNetBackbone:dropout_11 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_11 | network_backbone:ResNetBackbone:num_groups > 10)
+    (network_backbone:ResNetBackbone:dropout_12 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_12 | network_backbone:ResNetBackbone:num_groups > 11)
+    (network_backbone:ResNetBackbone:dropout_13 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_13 | network_backbone:ResNetBackbone:num_groups > 12)
+    (network_backbone:ResNetBackbone:dropout_14 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_14 | network_backbone:ResNetBackbone:num_groups > 13)
+    (network_backbone:ResNetBackbone:dropout_15 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_15 | network_backbone:ResNetBackbone:num_groups > 14)
+    (network_backbone:ResNetBackbone:dropout_2 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_2 | network_backbone:ResNetBackbone:num_groups > 1)
+    (network_backbone:ResNetBackbone:dropout_3 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_3 | network_backbone:ResNetBackbone:num_groups > 2)
+    (network_backbone:ResNetBackbone:dropout_4 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_4 | network_backbone:ResNetBackbone:num_groups > 3)
+    (network_backbone:ResNetBackbone:dropout_5 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_5 | network_backbone:ResNetBackbone:num_groups > 4)
+    (network_backbone:ResNetBackbone:dropout_6 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_6 | network_backbone:ResNetBackbone:num_groups > 5)
+    (network_backbone:ResNetBackbone:dropout_7 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_7 | network_backbone:ResNetBackbone:num_groups > 6)
+    (network_backbone:ResNetBackbone:dropout_8 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_8 | network_backbone:ResNetBackbone:num_groups > 7)
+    (network_backbone:ResNetBackbone:dropout_9 | network_backbone:ResNetBackbone:use_dropout == True && network_backbone:ResNetBackbone:dropout_9 | network_backbone:ResNetBackbone:num_groups > 8)
+    feature_preprocessor:ExtraTreesPreprocessorClassification:bootstrap | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:criterion | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:max_depth | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:max_features | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:max_leaf_nodes | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:min_impurity_decrease | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:min_samples_leaf | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:min_samples_split | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:min_weight_fraction_leaf | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:ExtraTreesPreprocessorClassification:n_estimators | feature_preprocessor:__choice__ == 'ExtraTreesPreprocessorClassification'
+    feature_preprocessor:FastICA:algorithm | feature_preprocessor:__choice__ == 'FastICA'
+    feature_preprocessor:FastICA:fun | feature_preprocessor:__choice__ == 'FastICA'
+    feature_preprocessor:FastICA:n_components | feature_preprocessor:FastICA:whiten == True
+    feature_preprocessor:FastICA:whiten | feature_preprocessor:__choice__ == 'FastICA'
+    feature_preprocessor:FeatureAgglomeration:affinity | feature_preprocessor:__choice__ == 'FeatureAgglomeration'
+    feature_preprocessor:FeatureAgglomeration:linkage | feature_preprocessor:__choice__ == 'FeatureAgglomeration'
+    feature_preprocessor:FeatureAgglomeration:n_clusters | feature_preprocessor:__choice__ == 'FeatureAgglomeration'
+    feature_preprocessor:FeatureAgglomeration:pooling_func | feature_preprocessor:__choice__ == 'FeatureAgglomeration'
+    feature_preprocessor:KernelPCA:coef0 | feature_preprocessor:KernelPCA:kernel in {'sigmoid', 'poly'}
+    feature_preprocessor:KernelPCA:degree | feature_preprocessor:KernelPCA:kernel == 'poly'
+    feature_preprocessor:KernelPCA:gamma | feature_preprocessor:KernelPCA:kernel in {'rbf', 'poly'}
+    feature_preprocessor:KernelPCA:kernel | feature_preprocessor:__choice__ == 'KernelPCA'
+    feature_preprocessor:KernelPCA:n_components | feature_preprocessor:__choice__ == 'KernelPCA'
+    feature_preprocessor:LibLinearSVCPreprocessor:C | feature_preprocessor:__choice__ == 'LibLinearSVCPreprocessor'
+    feature_preprocessor:LibLinearSVCPreprocessor:dual | feature_preprocessor:__choice__ == 'LibLinearSVCPreprocessor'
+    feature_preprocessor:LibLinearSVCPreprocessor:fit_intercept | feature_preprocessor:__choice__ == 'LibLinearSVCPreprocessor'
+    feature_preprocessor:LibLinearSVCPreprocessor:intercept_scaling | feature_preprocessor:__choice__ == 'LibLinearSVCPreprocessor'
+    feature_preprocessor:LibLinearSVCPreprocessor:loss | feature_preprocessor:__choice__ == 'LibLinearSVCPreprocessor'
+    feature_preprocessor:LibLinearSVCPreprocessor:multi_class | feature_preprocessor:__choice__ == 'LibLinearSVCPreprocessor'
+    feature_preprocessor:LibLinearSVCPreprocessor:penalty | feature_preprocessor:__choice__ == 'LibLinearSVCPreprocessor'
+    feature_preprocessor:LibLinearSVCPreprocessor:tol | feature_preprocessor:__choice__ == 'LibLinearSVCPreprocessor'
+    feature_preprocessor:Nystroem:coef0 | feature_preprocessor:Nystroem:kernel in {'sigmoid', 'poly'}
+    feature_preprocessor:Nystroem:degree | feature_preprocessor:Nystroem:kernel == 'poly'
+    feature_preprocessor:Nystroem:gamma | feature_preprocessor:Nystroem:kernel in {'rbf', 'poly'}
+    feature_preprocessor:Nystroem:kernel | feature_preprocessor:__choice__ == 'Nystroem'
+    feature_preprocessor:Nystroem:n_components | feature_preprocessor:__choice__ == 'Nystroem'
+    feature_preprocessor:PCA:keep_variance | feature_preprocessor:__choice__ == 'PCA'
+    feature_preprocessor:PCA:whiten | feature_preprocessor:__choice__ == 'PCA'
+    feature_preprocessor:PolynomialFeatures:degree | feature_preprocessor:__choice__ == 'PolynomialFeatures'
+    feature_preprocessor:PolynomialFeatures:include_bias | feature_preprocessor:__choice__ == 'PolynomialFeatures'
+    feature_preprocessor:PolynomialFeatures:interaction_only | feature_preprocessor:__choice__ == 'PolynomialFeatures'
+    feature_preprocessor:RandomKitchenSinks:gamma | feature_preprocessor:__choice__ == 'RandomKitchenSinks'
+    feature_preprocessor:RandomKitchenSinks:n_components | feature_preprocessor:__choice__ == 'RandomKitchenSinks'
+    feature_preprocessor:RandomTreesEmbedding:max_depth | feature_preprocessor:__choice__ == 'RandomTreesEmbedding'
+    feature_preprocessor:RandomTreesEmbedding:max_leaf_nodes | feature_preprocessor:__choice__ == 'RandomTreesEmbedding'
+    feature_preprocessor:RandomTreesEmbedding:min_samples_leaf | feature_preprocessor:__choice__ == 'RandomTreesEmbedding'
+    feature_preprocessor:RandomTreesEmbedding:min_samples_split | feature_preprocessor:__choice__ == 'RandomTreesEmbedding'
+    feature_preprocessor:RandomTreesEmbedding:n_estimators | feature_preprocessor:__choice__ == 'RandomTreesEmbedding'
+    feature_preprocessor:SelectPercentileClassification:percentile | feature_preprocessor:__choice__ == 'SelectPercentileClassification'
+    feature_preprocessor:SelectPercentileClassification:score_func | feature_preprocessor:__choice__ == 'SelectPercentileClassification'
+    feature_preprocessor:SelectRatesClassification:alpha | feature_preprocessor:__choice__ == 'SelectRatesClassification'
+    feature_preprocessor:SelectRatesClassification:mode | feature_preprocessor:__choice__ == 'SelectRatesClassification'
+    feature_preprocessor:SelectRatesClassification:score_func | feature_preprocessor:__choice__ == 'SelectRatesClassification'
+    feature_preprocessor:TruncatedSVD:target_dim | feature_preprocessor:__choice__ == 'TruncatedSVD'
+    lr_scheduler:CosineAnnealingLR:T_max | lr_scheduler:__choice__ == 'CosineAnnealingLR'
+    lr_scheduler:CosineAnnealingWarmRestarts:T_0 | lr_scheduler:__choice__ == 'CosineAnnealingWarmRestarts'
+    lr_scheduler:CosineAnnealingWarmRestarts:T_mult | lr_scheduler:__choice__ == 'CosineAnnealingWarmRestarts'
+    lr_scheduler:CyclicLR:base_lr | lr_scheduler:__choice__ == 'CyclicLR'
+    lr_scheduler:CyclicLR:max_lr | lr_scheduler:__choice__ == 'CyclicLR'
+    lr_scheduler:CyclicLR:mode | lr_scheduler:__choice__ == 'CyclicLR'
+    lr_scheduler:CyclicLR:step_size_up | lr_scheduler:__choice__ == 'CyclicLR'
+    lr_scheduler:ExponentialLR:gamma | lr_scheduler:__choice__ == 'ExponentialLR'
+    lr_scheduler:ReduceLROnPlateau:factor | lr_scheduler:__choice__ == 'ReduceLROnPlateau'
+    lr_scheduler:ReduceLROnPlateau:mode | lr_scheduler:__choice__ == 'ReduceLROnPlateau'
+    lr_scheduler:ReduceLROnPlateau:patience | lr_scheduler:__choice__ == 'ReduceLROnPlateau'
+    lr_scheduler:StepLR:gamma | lr_scheduler:__choice__ == 'StepLR'
+    lr_scheduler:StepLR:step_size | lr_scheduler:__choice__ == 'StepLR'
+    network_backbone:CDCNNBackbone:kernel_growth_ratio | network_backbone:__choice__ == 'CDCNNBackbone'
+    network_backbone:CDCNNBackbone:kernel_size | network_backbone:__choice__ == 'CDCNNBackbone'
+    network_backbone:CDCNNBackbone:num_gconv | network_backbone:__choice__ == 'CDCNNBackbone'
+    network_backbone:CDCNNBackbone:num_kernels | network_backbone:__choice__ == 'CDCNNBackbone'
+    network_backbone:CDCNNBackbone:reduction_ratio | network_backbone:__choice__ == 'CDCNNBackbone'
+    network_backbone:CLNNBackbone:kernel_growth_ratio | network_backbone:__choice__ == 'CLNNBackbone'
+    network_backbone:CLNNBackbone:kernel_size | network_backbone:__choice__ == 'CLNNBackbone'
+    network_backbone:CLNNBackbone:num_kernels | network_backbone:__choice__ == 'CLNNBackbone'
+    network_backbone:CLNNBackbone:num_unitb | network_backbone:__choice__ == 'CLNNBackbone'
+    network_backbone:DCNNBackbone:kernel_growth_ratio | network_backbone:__choice__ == 'DCNNBackbone'
+    network_backbone:DCNNBackbone:kernel_size | network_backbone:__choice__ == 'DCNNBackbone'
+    network_backbone:DCNNBackbone:num_kernels | network_backbone:__choice__ == 'DCNNBackbone'
+    network_backbone:DCNNBackbone:num_sconv | network_backbone:__choice__ == 'DCNNBackbone'
+    network_backbone:DCNNBackbone:reduction_ratio | network_backbone:__choice__ == 'DCNNBackbone'
+    network_backbone:LNNBackbone:kernel_growth_ratio | network_backbone:__choice__ == 'LNNBackbone'
+    network_backbone:LNNBackbone:kernel_size | network_backbone:__choice__ == 'LNNBackbone'
+    network_backbone:LNNBackbone:num_kernels | network_backbone:__choice__ == 'LNNBackbone'
+    network_backbone:LNNBackbone:num_unitb | network_backbone:__choice__ == 'LNNBackbone'
+    network_backbone:MLPBackbone:activation | network_backbone:__choice__ == 'MLPBackbone'
+    network_backbone:MLPBackbone:dropout_1 | network_backbone:MLPBackbone:use_dropout == True
+    network_backbone:MLPBackbone:num_groups | network_backbone:__choice__ == 'MLPBackbone'
+    network_backbone:MLPBackbone:num_units_1 | network_backbone:__choice__ == 'MLPBackbone'
+    network_backbone:MLPBackbone:num_units_10 | network_backbone:MLPBackbone:num_groups > 9
+    network_backbone:MLPBackbone:num_units_11 | network_backbone:MLPBackbone:num_groups > 10
+    network_backbone:MLPBackbone:num_units_12 | network_backbone:MLPBackbone:num_groups > 11
+    network_backbone:MLPBackbone:num_units_13 | network_backbone:MLPBackbone:num_groups > 12
+    network_backbone:MLPBackbone:num_units_14 | network_backbone:MLPBackbone:num_groups > 13
+    network_backbone:MLPBackbone:num_units_15 | network_backbone:MLPBackbone:num_groups > 14
+    network_backbone:MLPBackbone:num_units_2 | network_backbone:MLPBackbone:num_groups > 1
+    network_backbone:MLPBackbone:num_units_3 | network_backbone:MLPBackbone:num_groups > 2
+    network_backbone:MLPBackbone:num_units_4 | network_backbone:MLPBackbone:num_groups > 3
+    network_backbone:MLPBackbone:num_units_5 | network_backbone:MLPBackbone:num_groups > 4
+    network_backbone:MLPBackbone:num_units_6 | network_backbone:MLPBackbone:num_groups > 5
+    network_backbone:MLPBackbone:num_units_7 | network_backbone:MLPBackbone:num_groups > 6
+    network_backbone:MLPBackbone:num_units_8 | network_backbone:MLPBackbone:num_groups > 7
+    network_backbone:MLPBackbone:num_units_9 | network_backbone:MLPBackbone:num_groups > 8
+    network_backbone:MLPBackbone:use_dropout | network_backbone:__choice__ == 'MLPBackbone'
+    network_backbone:ResNetBackbone:activation | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ResNetBackbone:blocks_per_group_0 | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ResNetBackbone:blocks_per_group_1 | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ResNetBackbone:blocks_per_group_10 | network_backbone:ResNetBackbone:num_groups > 9
+    network_backbone:ResNetBackbone:blocks_per_group_11 | network_backbone:ResNetBackbone:num_groups > 10
+    network_backbone:ResNetBackbone:blocks_per_group_12 | network_backbone:ResNetBackbone:num_groups > 11
+    network_backbone:ResNetBackbone:blocks_per_group_13 | network_backbone:ResNetBackbone:num_groups > 12
+    network_backbone:ResNetBackbone:blocks_per_group_14 | network_backbone:ResNetBackbone:num_groups > 13
+    network_backbone:ResNetBackbone:blocks_per_group_15 | network_backbone:ResNetBackbone:num_groups > 14
+    network_backbone:ResNetBackbone:blocks_per_group_2 | network_backbone:ResNetBackbone:num_groups > 1
+    network_backbone:ResNetBackbone:blocks_per_group_3 | network_backbone:ResNetBackbone:num_groups > 2
+    network_backbone:ResNetBackbone:blocks_per_group_4 | network_backbone:ResNetBackbone:num_groups > 3
+    network_backbone:ResNetBackbone:blocks_per_group_5 | network_backbone:ResNetBackbone:num_groups > 4
+    network_backbone:ResNetBackbone:blocks_per_group_6 | network_backbone:ResNetBackbone:num_groups > 5
+    network_backbone:ResNetBackbone:blocks_per_group_7 | network_backbone:ResNetBackbone:num_groups > 6
+    network_backbone:ResNetBackbone:blocks_per_group_8 | network_backbone:ResNetBackbone:num_groups > 7
+    network_backbone:ResNetBackbone:blocks_per_group_9 | network_backbone:ResNetBackbone:num_groups > 8
+    network_backbone:ResNetBackbone:dropout_0 | network_backbone:ResNetBackbone:use_dropout == True
+    network_backbone:ResNetBackbone:dropout_1 | network_backbone:ResNetBackbone:use_dropout == True
+    network_backbone:ResNetBackbone:max_shake_drop_probability | network_backbone:ResNetBackbone:use_shake_drop == True
+    network_backbone:ResNetBackbone:num_groups | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ResNetBackbone:num_units_0 | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ResNetBackbone:num_units_1 | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ResNetBackbone:num_units_10 | network_backbone:ResNetBackbone:num_groups > 9
+    network_backbone:ResNetBackbone:num_units_11 | network_backbone:ResNetBackbone:num_groups > 10
+    network_backbone:ResNetBackbone:num_units_12 | network_backbone:ResNetBackbone:num_groups > 11
+    network_backbone:ResNetBackbone:num_units_13 | network_backbone:ResNetBackbone:num_groups > 12
+    network_backbone:ResNetBackbone:num_units_14 | network_backbone:ResNetBackbone:num_groups > 13
+    network_backbone:ResNetBackbone:num_units_15 | network_backbone:ResNetBackbone:num_groups > 14
+    network_backbone:ResNetBackbone:num_units_2 | network_backbone:ResNetBackbone:num_groups > 1
+    network_backbone:ResNetBackbone:num_units_3 | network_backbone:ResNetBackbone:num_groups > 2
+    network_backbone:ResNetBackbone:num_units_4 | network_backbone:ResNetBackbone:num_groups > 3
+    network_backbone:ResNetBackbone:num_units_5 | network_backbone:ResNetBackbone:num_groups > 4
+    network_backbone:ResNetBackbone:num_units_6 | network_backbone:ResNetBackbone:num_groups > 5
+    network_backbone:ResNetBackbone:num_units_7 | network_backbone:ResNetBackbone:num_groups > 6
+    network_backbone:ResNetBackbone:num_units_8 | network_backbone:ResNetBackbone:num_groups > 7
+    network_backbone:ResNetBackbone:num_units_9 | network_backbone:ResNetBackbone:num_groups > 8
+    network_backbone:ResNetBackbone:use_dropout | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ResNetBackbone:use_shake_drop | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ResNetBackbone:use_shake_shake | network_backbone:__choice__ == 'ResNetBackbone'
+    network_backbone:ShapedMLPBackbone:activation | network_backbone:__choice__ == 'ShapedMLPBackbone'
+    network_backbone:ShapedMLPBackbone:max_dropout | network_backbone:ShapedMLPBackbone:use_dropout == True
+    network_backbone:ShapedMLPBackbone:max_units | network_backbone:__choice__ == 'ShapedMLPBackbone'
+    network_backbone:ShapedMLPBackbone:mlp_shape | network_backbone:__choice__ == 'ShapedMLPBackbone'
+    network_backbone:ShapedMLPBackbone:num_groups | network_backbone:__choice__ == 'ShapedMLPBackbone'
+    network_backbone:ShapedMLPBackbone:output_dim | network_backbone:__choice__ == 'ShapedMLPBackbone'
+    network_backbone:ShapedMLPBackbone:use_dropout | network_backbone:__choice__ == 'ShapedMLPBackbone'
+    network_backbone:ShapedResNetBackbone:activation | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_backbone:ShapedResNetBackbone:blocks_per_group | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_backbone:ShapedResNetBackbone:max_dropout | network_backbone:ShapedResNetBackbone:use_dropout == True
+    network_backbone:ShapedResNetBackbone:max_shake_drop_probability | network_backbone:ShapedResNetBackbone:use_shake_drop == True
+    network_backbone:ShapedResNetBackbone:max_units | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_backbone:ShapedResNetBackbone:num_groups | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_backbone:ShapedResNetBackbone:output_dim | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_backbone:ShapedResNetBackbone:resnet_shape | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_backbone:ShapedResNetBackbone:use_dropout | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_backbone:ShapedResNetBackbone:use_shake_drop | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_backbone:ShapedResNetBackbone:use_shake_shake | network_backbone:__choice__ == 'ShapedResNetBackbone'
+    network_head:fully_connected:activation | network_head:fully_connected:num_layers > 1
+    network_head:fully_connected:num_layers | network_head:__choice__ == 'fully_connected'
+    network_head:fully_connected:units_layer_1 | network_head:fully_connected:num_layers > 1
+    network_head:fully_connected:units_layer_2 | network_head:fully_connected:num_layers > 2
+    network_head:fully_connected:units_layer_3 | network_head:fully_connected:num_layers > 3
+    network_head:fully_connected:units_layer_4 | network_head:fully_connected:num_layers > 4
+    network_init:NoInit:bias_strategy | network_init:__choice__ == 'NoInit'
+    optimizer:AdamOptimizer:beta1 | optimizer:__choice__ == 'AdamOptimizer'
+    optimizer:AdamOptimizer:beta2 | optimizer:__choice__ == 'AdamOptimizer'
+    optimizer:AdamOptimizer:lr | optimizer:__choice__ == 'AdamOptimizer'
+    optimizer:AdamOptimizer:weight_decay | optimizer:__choice__ == 'AdamOptimizer'
+    optimizer:AdamWOptimizer:beta1 | optimizer:__choice__ == 'AdamWOptimizer'
+    optimizer:AdamWOptimizer:beta2 | optimizer:__choice__ == 'AdamWOptimizer'
+    optimizer:AdamWOptimizer:lr | optimizer:__choice__ == 'AdamWOptimizer'
+    optimizer:AdamWOptimizer:weight_decay | optimizer:__choice__ == 'AdamWOptimizer'
+    optimizer:RMSpropOptimizer:alpha | optimizer:__choice__ == 'RMSpropOptimizer'
+    optimizer:RMSpropOptimizer:lr | optimizer:__choice__ == 'RMSpropOptimizer'
+    optimizer:RMSpropOptimizer:momentum | optimizer:__choice__ == 'RMSpropOptimizer'
+    optimizer:RMSpropOptimizer:weight_decay | optimizer:__choice__ == 'RMSpropOptimizer'
+    optimizer:SGDOptimizer:lr | optimizer:__choice__ == 'SGDOptimizer'
+    optimizer:SGDOptimizer:momentum | optimizer:__choice__ == 'SGDOptimizer'
+    optimizer:SGDOptimizer:weight_decay | optimizer:__choice__ == 'SGDOptimizer'
+    scaler:Normalizer:norm | scaler:__choice__ == 'Normalizer'
+    scaler:QuantileTransformer:n_quantiles | scaler:__choice__ == 'QuantileTransformer'
+    scaler:QuantileTransformer:output_distribution | scaler:__choice__ == 'QuantileTransformer'
+    scaler:RobustScaler:q_max | scaler:__choice__ == 'RobustScaler'
+    scaler:RobustScaler:q_min | scaler:__choice__ == 'RobustScaler'
+    trainer:StandardTrainer:weighted_loss | trainer:__choice__ == 'StandardTrainer'
+  Forbidden Clauses:
+    (Forbidden: feature_preprocessor:FeatureAgglomeration:affinity in {'cosine', 'manhattan'} && Forbidden: feature_preprocessor:FeatureAgglomeration:linkage == 'ward')
+    (Forbidden: feature_preprocessor:LibLinearSVCPreprocessor:penalty == 'l1' && Forbidden: feature_preprocessor:LibLinearSVCPreprocessor:loss == 'hinge')
