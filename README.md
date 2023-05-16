@@ -3,10 +3,27 @@ Efficient AutoDL for Generating Denial-of-Service Defense Models in the Internet
 
 ## Project Description
 Introduce the project.
-### Folder description:
-* data: Contain scripts or notebooks related to data preparation and data extraction. You should put the origin CICDDoS2019 data in data/origin_data/
-* main: Contain scripts or notebooks related to serach the best configuration and trainning(refit) with it. 
-* network_backcone: Our lightweight search space.
+
+### Folder Description:
+* data: Contains scripts or notebooks related to data preparation and data extraction. The original CICDDoS2019 data should be placed in the data/origin_data/ directory.
+    * data.sh: Script to execute the code in the data folder. The execution order is as follows: 1. extract.py, 2. cleaning.py, 3. divide.py.
+    * extract.py: Randomly selects subdata, including five percent of DDoS packets and all benign packets.
+    * cleaning.py: Cleans the data.
+    * divide.py: Divides the clean data into feature and label CSV files.
+* data/predict_data: Contains scripts or notebooks related to predict data preparation. This data is used for testing the prediction time of the ML/DL pipeline.
+* main: Contains scripts or notebooks related to searching for the best configuration and training (refit) with it.
+    
+    Contain our nine test cases describe below:
+    1. DC: Default configuration.
+    2. DCwM: Default configuration with MinMaxScalar.
+    3. DCwR: Default configuration with RobustScalar.
+    4. DCwP: Default configuration with PCA.
+    5. DCwF: Default configuration with FeatureAgglomeration.
+    6. LW1: Lightweight architecture one.
+    7. T1 The architecture similar to LW1 while without the lightweight mechanism.
+    8. LW2 Lightweight architecture two.
+    9. T2 The architecture similar to LW2 while without the lightweight mechanism
+* search_space: Contains our lightweight model search space.
 
 ## Installation
 ### Dependencies:

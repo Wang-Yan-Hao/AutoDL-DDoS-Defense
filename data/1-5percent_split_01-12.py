@@ -57,10 +57,7 @@ for name, group in grouped_df:
 # Concatenate the selected rows into a single dataframe
 selected_df = pd.concat(selected_rows)
 
-# Reset the index of the selected dataframe
-selected_df = selected_df.reset_index(drop=True)
 Ten_percent_training_dict
-selected_df.to_csv('./seed=12=01-12-5-percent.csv',index=False)
 
 for key in Ten_percent_training_dict:
     print(f"{key} 這個類型的封包擁有 {Ten_percent_training_dict[key]} 這麼多個")
