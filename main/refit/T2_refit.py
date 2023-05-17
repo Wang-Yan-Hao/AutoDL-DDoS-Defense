@@ -1,18 +1,13 @@
 import os
 import tempfile as tmp
-import warnings
+import pandas as pd
+import sklearn.metrics
 
 os.environ['JOBLIB_TEMP_FOLDER'] = tmp.gettempdir()
 os.environ['OMP_NUM_THREADS'] = '10'
 os.environ['OPENBLAS_NUM_THREADS'] = '10'
 os.environ['MKL_NUM_THREADS'] = '10'
-
-#warnings.simplefilter(action='ignore', category=UserWarning)
-#warnings.simplefilter(action='ignore', category=FutureWarning)
-
-import sklearn.datasets
-import pandas as pd
-import sklearn.metrics
+os.environ['CUDA_VISIBLE_DEVICES'] = '0' # Using first GPU 
 
 from autoPyTorch.api.tabular_classification import TabularClassificationTask
 from autoPyTorch.datasets.resampling_strategy import HoldoutValTypes
@@ -22,11 +17,9 @@ current_file_path = os.path.abspath(__file__) # Get the path of the current Pyth
 current_file_name = os.path.splitext(os.path.basename(current_file_path))[0] # Get the filename without the path or extension
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
-
 estimator = TabularClassificationTask(
-    temporary_directory= os.path.join(script_dir, './tmp/autoPyTorch_example_tmp'),
-    output_directory= os.path.join(script_dir, './tmp/autoPyTorch_example_out'),
+    temporary_directory= os.path.join(script_dir, './tmp_T2/autoPyTorch_example_tmp'),
+    output_directory= os.path.join(script_dir, './tmp_T2/autoPyTorch_example_out'),
     delete_tmp_folder_after_terminate=False,
     delete_output_folder_after_terminate=False,
     ensemble_size = 0, # Not ensemble
@@ -36,19 +29,19 @@ estimator = TabularClassificationTask(
     n_jobs=1,
 )
 
-X_train = pd.read_csv('../../01-12-5-percentclean-feature.csv')
-y_train = pd.read_csv('../../01-12-5-percentclean-label.csv')
-X_test = pd.read_csv('../../03-11-5-percentclean-feature.csv')
-y_test = pd.read_csv('../../03-11-5-percentclean-label.csv')
-
+X_train = pd.read_csv('data/output/01-12-five-percent-clean-feature.csv')
+y_train = pd.read_csv('data/output/01-12-five-percent-clean-label.csv')
+X_test = pd.read_csv('data/output/03-11-five-percent-clean-feature.csv')
+y_test = pd.read_csv('data/output/03-11-five-percent-clean-label.csv')
 
 dataset = estimator.get_dataset(X_train=X_train,
                                 y_train=y_train,
                                 X_test=X_test,
                                 y_test=y_test)
+
 space = estimator.get_search_space(dataset)
 
-configuration = Configuration(configuration_space=space, values={
+configuration = Configuration(configuration_space=space,values={ # Set to the best configure find in the search
   'coalescer:__choice__': 'NoCoalescer',
   'data_loader:batch_size': 64,
   'encoder:__choice__': 'NoEncoder',
@@ -58,12 +51,12 @@ configuration = Configuration(configuration_space=space, values={
   'lr_scheduler:ReduceLROnPlateau:mode': 'min',
   'lr_scheduler:ReduceLROnPlateau:patience': 10,
   'lr_scheduler:__choice__': 'ReduceLROnPlateau',
-  'network_backbone:DCNNBackbone:kernel_growth_ratio': 4,
-  'network_backbone:DCNNBackbone:kernel_size': 3,
-  'network_backbone:DCNNBackbone:num_kernels': 16,
-  'network_backbone:DCNNBackbone:num_sconv': 2,
-  'network_backbone:DCNNBackbone:reduction_ratio': 16,
-  'network_backbone:__choice__': 'DCNNBackbone',
+  'network_backbone:CDCNNBackbone:kernel_growth_ratio': 4,
+  'network_backbone:CDCNNBackbone:kernel_size': 3,
+  'network_backbone:CDCNNBackbone:num_gconv': 2,
+  'network_backbone:CDCNNBackbone:num_kernels': 16,
+  'network_backbone:CDCNNBackbone:reduction_ratio': 16,
+  'network_backbone:__choice__': 'CDCNNBackbone',
   'network_embedding:__choice__': 'NoEmbedding',
   'network_head:__choice__': 'fully_connected',
   'network_head:fully_connected:activation': 'relu',
@@ -81,7 +74,7 @@ configuration = Configuration(configuration_space=space, values={
   'trainer:__choice__': 'StandardTrainer',
 })
 
-print("Passed Configuration:", configuration)
+print(configuration)
 
 pipeline, run_info, run_value, dataset = estimator.fit_pipeline(X_train=X_train,
                                                                 y_train=y_train,

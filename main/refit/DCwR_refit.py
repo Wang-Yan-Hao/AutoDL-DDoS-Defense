@@ -1,18 +1,13 @@
 import os
 import tempfile as tmp
-import warnings
+import pandas as pd
+import sklearn.metrics
 
 os.environ['JOBLIB_TEMP_FOLDER'] = tmp.gettempdir()
 os.environ['OMP_NUM_THREADS'] = '10'
 os.environ['OPENBLAS_NUM_THREADS'] = '10'
 os.environ['MKL_NUM_THREADS'] = '10'
-
-#warnings.simplefilter(action='ignore', category=UserWarning)
-#warnings.simplefilter(action='ignore', category=FutureWarning)
-
-import sklearn.datasets
-import pandas as pd
-import sklearn.metrics
+os.environ['CUDA_VISIBLE_DEVICES'] = '0' # Using first GPU 
 
 from autoPyTorch.api.tabular_classification import TabularClassificationTask
 from autoPyTorch.datasets.resampling_strategy import HoldoutValTypes
@@ -22,11 +17,9 @@ current_file_path = os.path.abspath(__file__) # Get the path of the current Pyth
 current_file_name = os.path.splitext(os.path.basename(current_file_path))[0] # Get the filename without the path or extension
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
-
 estimator = TabularClassificationTask(
-    temporary_directory= os.path.join(script_dir, './tmp/autoPyTorch_example_tmp'),
-    output_directory= os.path.join(script_dir, './tmp/autoPyTorch_example_out'),
+    temporary_directory= os.path.join(script_dir, './tmp_DCwR/autoPyTorch_example_tmp'),
+    output_directory= os.path.join(script_dir, './tmp_DCwR/autoPyTorch_example_out'),
     delete_tmp_folder_after_terminate=False,
     delete_output_folder_after_terminate=False,
     ensemble_size = 0, # Not ensemble
@@ -36,19 +29,19 @@ estimator = TabularClassificationTask(
     n_jobs=1,
 )
 
-X_train = pd.read_csv('../../01-12-5-percentclean-feature.csv')
-y_train = pd.read_csv('../../01-12-5-percentclean-label.csv')
-X_test = pd.read_csv('../../03-11-5-percentclean-feature.csv')
-y_test = pd.read_csv('../../03-11-5-percentclean-label.csv')
-
+X_train = pd.read_csv('data/output/01-12-five-percent-clean-feature.csv')
+y_train = pd.read_csv('data/output/01-12-five-percent-clean-label.csv')
+X_test = pd.read_csv('data/output/03-11-five-percent-clean-feature.csv')
+y_test = pd.read_csv('data/output/03-11-five-percent-clean-label.csv')
 
 dataset = estimator.get_dataset(X_train=X_train,
                                 y_train=y_train,
                                 X_test=X_test,
                                 y_test=y_test)
+
 space = estimator.get_search_space(dataset)
 
-configuration = Configuration(configuration_space=space,values={
+configuration = Configuration(configuration_space=space,values={ # Set to the best configure find in the search
   'coalescer:__choice__': 'NoCoalescer',
   'data_loader:batch_size': 64,
   'encoder:__choice__': 'NoEncoder',
@@ -77,7 +70,9 @@ configuration = Configuration(configuration_space=space,values={
   'optimizer:AdamOptimizer:lr': 0.01,
   'optimizer:AdamOptimizer:weight_decay': 0.0,
   'optimizer:__choice__': 'AdamOptimizer',
-  'scaler:__choice__': 'MinMaxScaler',
+  'scaler:RobustScaler:q_max': 0.75,
+  'scaler:RobustScaler:q_min': 0.25,
+  'scaler:__choice__': 'RobustScaler',
   'trainer:StandardTrainer:weighted_loss': True,
   'trainer:__choice__': 'StandardTrainer',
 })

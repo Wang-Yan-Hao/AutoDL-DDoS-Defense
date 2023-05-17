@@ -45,7 +45,7 @@ search_config = {
         }},
         {"FeatureAgglomeration" : 
         {
-            "affinity" : lambda spec: tune.choice(["euclidean"]) if spec.search_config.feature_preprocessor.FeatureAgglomeration.linkage == 'ward' else tune.choice(["euclidean","manhattan", "cosine"]),
+            "affinity" : tune.choice(["euclidean","manhattan", "cosine"]),
             "linkage" : tune.choice(["ward", "complete", "average"]),
             "n_clusters" : tune.randint(39,71),
             "pooling_func" : tune.choice(["mean", "median", "max"]),
@@ -66,7 +66,7 @@ search_config = {
             "intercept_scaling" : 1,
             "loss" : tune.choice(["squared_hinge", "hinge"]),
             "multi_class" : tune.choice(["ovr"]),
-            "penalty" : lambda spec: None if spec.search_config.feature_preprocessor.LibLinearSVCPreprocessor.loss == 'hinge' else tune.choice(["1l"]),
+            "penalty" : tune.choice(["1l"]),
             "tol" : tune.loguniform(1e-5,0.1),
         }},
         {"Nystroem" :

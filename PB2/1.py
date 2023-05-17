@@ -103,29 +103,4 @@ logging.info(f'Predict score: {score}')
 sprint_statistics = api.sprint_statistics()
 logging.info(f'Model statistics: {sprint_statistics}')
 
-"""     logging.info('Starting refit')
-api.refit(
-    X_train=X_train,
-    y_train=y_train,
-    X_test=X_test,
-    y_test=y_test,
-    # pipeline_options={'device':'cuda'},
-    total_walltime_limit=100,
-    run_time_limit_secs=100,
-)
-
-logging.info('Starting the predict for the best model')
-y_pred = api.predict(X_test)
-logging.info('Finished the predict for the best model')
-score = api.score(y_pred, y_test)
-logging.info(f'Predict score: {score}')
-show_models = api.show_models()
-logging.info(f'Show model: {show_models}')
-
-# Enable CUDA device
-device = torch.device("cuda")
-# Print GPU memory usage
-mem_used = torch.cuda.max_memory_allocated(device) / 1024 / 1024  # Convert bytes to megabytes
-print(f"\ Maximum GPU memory used = {mem_used:.2f} MB") """
-
 logging.info('Process end')
