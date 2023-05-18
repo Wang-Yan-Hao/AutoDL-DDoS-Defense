@@ -2,9 +2,10 @@
 Efficient AutoDL for Generating Denial-of-Service Defense Models in the Internet of Things
 
 ## Project Description
-Introduce the project.
+Efficient AutoDL for Generating Denial-of-Service Defense Models in the Internet of Things
 
 ### Folder Description:
+* autopytorch_0.2.1: source code of [autopytorch](https://github.com/automl/Auto-PyTorch) which add our lightweight search space.
 * data: Contains scripts or notebooks related to data preparation and data extraction. The original CICDDoS2019 data should be placed in the data/origin_data/ directory.
     * data.sh: Script to execute the code in the data folder. The execution order is as follows: 1. extract.py, 2. cleaning.py, 3. divide.py.
     * extract.py: Randomly selects subdata, including five percent of DDoS packets and all benign packets.
@@ -31,7 +32,10 @@ Introduce the project.
 * autopytorch == 0.2.1
 
 ### Installation step:
+`pip install autopytorch==0.2.1`
 
 ## Usage
+Run the script.
 
 ## License
+MIT License
