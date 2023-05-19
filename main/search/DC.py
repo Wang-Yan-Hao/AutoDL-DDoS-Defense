@@ -52,15 +52,15 @@ def get_memory_info():
 logging.info(f'Execution path is {current_file_path}')
 logging.info('Read data')
 
-X_train = pd.read_csv('data/output/01-12_five_percent_clean_feature.csv')
-y_train = pd.read_csv('data/output/01-12_five_percent_clean_label.csv')
-X_test = pd.read_csv('data/output/03-11_five_percent_clean_feature.csv')
-y_test = pd.read_csv('data/output/03-11_five_percent_clean_label.csv')
+X_train = pd.read_csv('data/searching_data/output/01-12_five_percent_clean_feature.csv')
+y_train = pd.read_csv('data/searching_data/output/01-12_five_percent_clean_label.csv')
+X_test = pd.read_csv('data/searching_data/output/03-11_five_percent_clean_feature.csv')
+y_test = pd.read_csv('data/searching_data/output/03-11_five_percent_clean_label.csv')
 
 logging.info('Start Process')
 api = TabularClassificationTask(
     temporary_directory= os.path.join(script_dir, './tmp'+current_file_name+'/autoPyTorch_example_tmp'),
-    output_directory= os.path.join(script_dir, './tmp'+current_file_name+'autoPyTorch_example_out'),
+    output_directory= os.path.join(script_dir, './tmp'+current_file_name+'/autoPyTorch_example_out'),
     delete_tmp_folder_after_terminate=False,
     delete_output_folder_after_terminate=False,
     ensemble_size = config.paper_config['ensemble_learning'], # Not ensemble
@@ -68,7 +68,7 @@ api = TabularClassificationTask(
     resampling_strategy=config.paper_config['resampling_strategy'],
     resampling_strategy_args=config.paper_config['resampling_strategy_args'],
     seed=config.run_config['seed'],
-    n_jobs=config.paper_config['process_num']
+    n_jobs=config.run_config['process_num']
 )
 
 get_memory_info()

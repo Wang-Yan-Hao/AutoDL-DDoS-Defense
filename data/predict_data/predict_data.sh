@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python predict_data.py
+python data/predict_data/predict_data.py

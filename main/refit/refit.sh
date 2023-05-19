@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of Python files to execute
-python_files=("main/search/DC.py" "main/search/DCwF.py" "main/search/DCwM.py" "main/search/DCwP.py" "main/search/DCwR.py" "main/search/LW1.py" "main/search/LW2.py" "main/search/T1.py" "main/search/T2.py")
+python_files=("DC.py" "DCwF.py" "DCwM.py" "DCwP.py" "DCwR.py", "LW1.py", "LW2.py", "T1.py", "T2.py")
 
 # Create an array to store the process IDs
 pids=()

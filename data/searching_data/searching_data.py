@@ -1,8 +1,7 @@
-import sys
 import subprocess
 
 # Open the log file in append mode
-with open('data/data.log', 'a') as log_file:
+with open('data/searching_data/data.log', 'a') as log_file:
     # Execute extract.py
     subprocess.call(['python', 'data/searching_data/extract.py'], stdout=log_file)
 

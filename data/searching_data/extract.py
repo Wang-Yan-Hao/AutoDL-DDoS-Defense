@@ -51,16 +51,16 @@ def process_dataset(dataset_path, output_csv_path) -> dict:
 training_dataset_path = 'data/origin_data/CSV-01-12/01-12/'
 testing_dataset_path = 'data/origin_data/CSV-03-11/03-11/'
 
-output_folder = 'data/output/'
+output_folder = 'data/searching_data/output/'
 if not os.path.exists(output_folder):
     os.mkdir(output_folder)
 
 # Process the training dataset
-training_output_csv_path = 'data/output/01-12_five_percent.csv'
+training_output_csv_path = 'data/searching_data/output/01-12_five_percent.csv'
 training_selected_rows = process_dataset(training_dataset_path, training_output_csv_path)
 
 # Process the testing dataset
-testing_output_csv_path = 'data/output/03-11_five_percent.csv'
+testing_output_csv_path = 'data/searching_data/output/03-11_five_percent.csv'
 testing_selected_rows = process_dataset(testing_dataset_path, testing_output_csv_path)
 
 print('# Training Day')

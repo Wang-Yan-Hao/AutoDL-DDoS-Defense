@@ -35,8 +35,8 @@ estimator = TabularClassificationTask(
 
 X_train = pd.read_csv('data/searching_data/output/01-12_five_percent_clean_feature.csv')
 y_train = pd.read_csv('data/searching_data/output/01-12_five_percent_clean_label.csv')
-X_test = pd.read_csv('data/searching_data/03-11_five_percent_clean_feature.csv')
-y_test = pd.read_csv('data/searching_data/03-11_five_percent_clean_label.csv')
+X_test = pd.read_csv('data/searching_data/output/03-11_five_percent_clean_feature.csv')
+y_test = pd.read_csv('data/searching_data/output/03-11_five_percent_clean_label.csv')
 
 dataset = estimator.get_dataset(X_train=X_train,
                                 y_train=y_train,

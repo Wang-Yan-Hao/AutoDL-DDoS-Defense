@@ -29,7 +29,7 @@ def handle_func(csv_path: str, output_file: str):
     print('')
 
 # Read column names from file
-cols = list(pd.read_csv('data/output/03-11_five_percent.csv', nrows =1))
+cols = list(pd.read_csv('data/evaluation_data/output/03-11_five_percent.csv', nrows =1))
 print(f'Number of origin col number: {len(cols)}')
 
 usecols = [i for i in cols if i != 'Unnamed: 0'and i != 'Unnamed: 0.1' and i != 'Flow ID' and i != ' Source IP' and i != ' Source Port' and i != ' Destination IP' and i != ' Destination Port' and i != ' Timestamp' and i != 'SimillarHTTP']
@@ -39,9 +39,9 @@ print(f'The extract col: {usecols}')
 print('')
 
 print('Training Day')
-handle_func('data/output/01-12_five_percent.csv', 'data/output/01-12_five_percent_clean.csv')
+handle_func('data/evaluation_data/output/01-12_five_percent.csv', 'data/evaluation_data/output/01-12_five_percent_clean.csv')
 print('Testing Day')
-handle_func('data/output/03-11_five_percent.csv', 'data/output/03-11_five_percent_clean.csv')
+handle_func('data/evaluation_data/output/03-11_five_percent.csv', 'data/evaluation_data/output/03-11_five_percent_clean.csv')
 
 elapsed_time = time.time() - start_time
 
