@@ -1,13 +1,17 @@
 import os
-import tempfile as tmp
+import config
 import pandas as pd
-import sklearn.metrics
+import tempfile as tmp
+
+current_file_path = os.path.abspath(__file__) # Get the path of the current Python file
+current_file_name = os.path.splitext(os.path.basename(current_file_path))[0] # Get the filename without the path or extension
+script_dir = os.path.dirname(os.path.abspath(__file__)) # Get current directory path
 
 os.environ['JOBLIB_TEMP_FOLDER'] = tmp.gettempdir()
 os.environ['OMP_NUM_THREADS'] = '10'
 os.environ['OPENBLAS_NUM_THREADS'] = '10'
 os.environ['MKL_NUM_THREADS'] = '10'
-os.environ['CUDA_VISIBLE_DEVICES'] = '0' # Using first GPU 
+os.environ['CUDA_VISIBLE_DEVICES'] = config.run_config[current_file_name+'_using_GPU'] 
 
 from autoPyTorch.api.tabular_classification import TabularClassificationTask
 from autoPyTorch.datasets.resampling_strategy import HoldoutValTypes
@@ -18,21 +22,21 @@ current_file_name = os.path.splitext(os.path.basename(current_file_path))[0] # G
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 estimator = TabularClassificationTask(
-    temporary_directory= os.path.join(script_dir, './tmp_LW2/autoPyTorch_example_tmp'),
-    output_directory= os.path.join(script_dir, './tmp_LW2/autoPyTorch_example_out'),
+    temporary_directory= os.path.join(script_dir, './tmp'+current_file_name+'/autoPyTorch_example_tmp'),
+    output_directory= os.path.join(script_dir, './tmp'+current_file_name+'autoPyTorch_example_out'),
     delete_tmp_folder_after_terminate=False,
     delete_output_folder_after_terminate=False,
-    ensemble_size = 0, # Not ensemble
-    resampling_strategy=HoldoutValTypes.holdout_validation,
-    resampling_strategy_args={'val_share': 0.2},
-    seed=42,
-    n_jobs=1,
+    ensemble_size = config.paper_config['ensemble_learning'], # Not ensemble
+    resampling_strategy=config.paper_config['resampling_strategy'],
+    resampling_strategy_args=config.paper_config['resampling_strategy_args'],
+    seed=config.run_config['seed'],
+    n_jobs=config.paper_config['process_num']
 )
 
-X_train = pd.read_csv('data/output/01-12-five-percent-clean-feature.csv')
-y_train = pd.read_csv('data/output/01-12-five-percent-clean-label.csv')
-X_test = pd.read_csv('data/output/03-11-five-percent-clean-feature.csv')
-y_test = pd.read_csv('data/output/03-11-five-percent-clean-label.csv')
+X_train = pd.read_csv('data/searching_data/output/01-12_five_percent_clean_feature.csv')
+y_train = pd.read_csv('data/searching_data/output/01-12_five_percent_clean_label.csv')
+X_test = pd.read_csv('data/searching_data/03-11_five_percent_clean_feature.csv')
+y_test = pd.read_csv('data/searching_data/03-11_five_percent_clean_label.csv')
 
 dataset = estimator.get_dataset(X_train=X_train,
                                 y_train=y_train,
@@ -76,17 +80,18 @@ configuration = Configuration(configuration_space=space,values={ # Set to the be
 
 print("Passed Configuration:", configuration)
 
+# Start training
 pipeline, run_info, run_value, dataset = estimator.fit_pipeline(X_train=X_train,
                                                                 y_train=y_train,
                                                                 X_test=X_test.copy(),
                                                                 y_test=y_test.copy(),
                                                                 configuration=configuration,
-                                                                budget_type='epochs',
-                                                                budget=50,
+                                                                budget_type=config.paper_config['budget_type'],
+                                                                budget=config.paper_config['budget'],
                                                                 run_time_limit_secs=1000000,
                                                                 pipeline_options={'device': 'cuda'},
-                                                                resampling_strategy=HoldoutValTypes.holdout_validation,
-                                                                resampling_strategy_args={'val_share': 0.2},
+                                                                resampling_strategy=config.paper_config['resampling_strategy'],
+                                                                resampling_strategy_args=config.paper_config['resampling_strategy_args'],
                                                                 )
 
 # The fit_pipeline command also returns a named tuple with the pipeline constraints
