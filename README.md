@@ -39,6 +39,7 @@ Efficient AutoDL for Generating Denial-of-Service Defense Models in the Internet
 1. `pip install autopytorch==0.2.1`
 
 ## Usage
+All the operations assume you stay in the root directory.
 1. Run all the scripts in the data folder to prepare data.
 2. Run the main/search/search.sh to search for the best ML/DL pipeline configuration
 3. Parse the best configuration string to the code in the refit folder (a string).
