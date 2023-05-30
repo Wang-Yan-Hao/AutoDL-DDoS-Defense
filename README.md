@@ -36,7 +36,7 @@ Efficient AutoDL for Generating Denial-of-Service Defense Models in the Internet
 * autopytorch == 0.2.1
 
 ### Installation step:
-1. `pip install autopytorch==0.2.1`
+1. `pip install autopytorch==0.2.1`, we use this command mainly to get the dependencies of autopytorch, you should use our autopytorch source code with our lightweight search space integration.
 
 ## Usage
 All the operations assume you stay in the root directory.
